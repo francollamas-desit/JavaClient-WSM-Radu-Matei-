@@ -22,6 +22,13 @@
             <version>8.0.1</version>
         </dependency>
 
+        <!-- Websocket Manager -->
+        <dependency>
+            <groupId>com.desitsa</groupId>
+            <artifactId>websocketmanager</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
         <!-- WebSockets -->
         <dependency>
             <groupId>org.java-websocket</groupId>
