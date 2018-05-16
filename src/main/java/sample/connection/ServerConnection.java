@@ -2,12 +2,11 @@ package sample.connection;
 
 import com.desitsa.websocketmanager.Connection;
 
-import java.util.ArrayList;
-
 public class ServerConnection {
 
-    private ArrayList<Connection> cons;
     private static ServerConnection instance;
+
+    private Connection connection;
 
     public static ServerConnection getInstance() {
         if (instance == null) instance = new ServerConnection();
@@ -15,17 +14,11 @@ public class ServerConnection {
     }
 
     private ServerConnection() {
-
-        cons = new ArrayList<>();
-        for (int i = 0; i < 900; i++) {
-            Connection c = new Connection("ws://localhost:54800/messages", Messages.class);
-            c.start();
-            cons.add(c);
-        }
-
+            connection = new Connection("ws://localhost:54800/messages", Messages.class, true);
+            connection.start();
     }
 
     public void close() {
-        for (Connection c : cons) c.close();
+        connection.close();
     }
 }
