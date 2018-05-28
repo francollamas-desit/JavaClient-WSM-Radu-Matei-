@@ -14,7 +14,7 @@ public class ServerConnection {
     }
 
     private ServerConnection() {
-            connection = new Connection("ws://localhost:54800/messages", Messages.class);
+            connection = new Connection("ws://localhost:51321/messages", Messages.class);
             connection.start();
     }
 

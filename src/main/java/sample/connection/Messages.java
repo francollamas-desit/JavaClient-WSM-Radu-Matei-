@@ -9,8 +9,8 @@ public class Messages extends MessagesHandler {
     @Override
     public void onConnected(String connectionID) {
 
-        // Conexión con el servidor
-        invoke("Handshake", "SR-A01", "asdasd").result((r, e) -> {
+        // CENTRAL DE MONITOREO
+        invoke("Handshake", 0, "SR-A01", "asdasd").result((r, e) -> {
             if (e != null || r == null) return;
 
             autentified = (boolean)r;
@@ -18,6 +18,20 @@ public class Messages extends MessagesHandler {
                 System.out.println("Autenticado!!");
             }
         });
+
+        // ADMINISTRADOR
+        /*invoke("Handshake", 69, "franco", "asdasd").result((r, e) -> {
+            if (e != null || r == null) return;
+
+            if ((boolean)r)
+                System.out.println("Autenticado!!");
+        });*/
+
+    }
+
+    public void intSecuencial(int reintento) {
+        System.out.println("anda" + reintento);
+        //invokeOnly("IntSecuencial");
     }
 
     @Override
