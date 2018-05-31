@@ -9,8 +9,10 @@ public class Messages extends MessagesHandler {
     @Override
     public void onConnected(String connectionID) {
 
+        System.out.println(connectionID);
+
         // CENTRAL DE MONITOREO
-        invoke("Handshake", 0, "SR-A01", "asdasd").result((r, e) -> {
+        invoke("Handshake", 0, "SR-A02", "asdasd").result((r, e) -> {
             if (e != null || r == null) return;
 
             autentified = (boolean)r;
@@ -20,7 +22,7 @@ public class Messages extends MessagesHandler {
         });
 
         // ADMINISTRADOR
-        /*invoke("Handshake", 69, "franco", "asdasd").result((r, e) -> {
+        /*invoke("Handshake", 69, "franco0", "asdasd").result((r, e) -> {
             if (e != null || r == null) return;
 
             if ((boolean)r)
@@ -30,8 +32,9 @@ public class Messages extends MessagesHandler {
     }
 
     public void intSecuencial(int reintento) {
-        System.out.println("anda" + reintento);
-        //invokeOnly("IntSecuencial");
+        //System.out.println("anda" + reintento);
+        invokeOnly("IntSecuencial");
+        //if (reintento == 2) invokeOnly("IntSecuencial");
     }
 
     @Override
@@ -42,6 +45,7 @@ public class Messages extends MessagesHandler {
     public void receiveMessage(String id, String msg) {
         System.out.println(id + " - " + msg);
     }
+
 
     @Override
     public void onClose(int i, String s, boolean b) {
