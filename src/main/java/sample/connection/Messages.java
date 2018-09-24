@@ -4,22 +4,25 @@ import com.desitsa.websocketmanager.MessagesHandler;
 
 public class Messages extends MessagesHandler {
 
+    public static String name = "";
+    public static String pass = "";
+
     private boolean autentified;
 
     @Override
     public void onConnected(String connectionID) {
 
-        System.out.println(connectionID);
+        System.out.println("Conectado! ID: " + connectionID);
 
         // CENTRAL DE MONITOREO
-        invoke("Handshake", 0, "SR-A02", "asdasd").result((r, e) -> {
+        /*invoke("Handshake", 0, name, pass).result((r, e) -> {
             if (e != null || r == null) return;
 
             autentified = (boolean)r;
             if (autentified) {
                 System.out.println("Autenticado!!");
             }
-        });
+        });*/
 
         // ADMINISTRADOR
         /*invoke("Handshake", 69, "franco0", "asdasd").result((r, e) -> {
@@ -33,7 +36,7 @@ public class Messages extends MessagesHandler {
 
     public void intSecuencial(int reintento) {
         //System.out.println("anda" + reintento);
-        invokeOnly("IntSecuencial");
+        //invokeOnly("IntSecuencial");
         //if (reintento == 2) invokeOnly("IntSecuencial");
     }
 
@@ -46,6 +49,9 @@ public class Messages extends MessagesHandler {
         System.out.println(id + " - " + msg);
     }
 
+    public void mensaje(String msg) {
+        System.out.println(msg);
+    }
 
     @Override
     public void onClose(int i, String s, boolean b) {
