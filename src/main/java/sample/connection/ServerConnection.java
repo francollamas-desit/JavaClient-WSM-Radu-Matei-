@@ -14,7 +14,7 @@ public class ServerConnection {
     }
 
     private ServerConnection() {
-            connection = new Connection("wss://localhost:44359/messages", Messages.class);
+            connection = new Connection("wss://desitsa.com/messages", Messages.class);
             connection.start();
     }
 
